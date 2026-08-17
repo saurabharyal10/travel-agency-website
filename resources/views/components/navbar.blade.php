@@ -27,7 +27,7 @@
                 <a href="{{ url('/about') }}" class="{{ $navLink(request()->is('about*')) }}">About Us</a>
             </li>
             <li>
-                <a href="#" class="{{ $navLink(request()->is('blog*')) }}">Blog</a>
+                <a href="{{ url('/blog') }}" class="{{ $navLink(request()->is('blog*')) }}">Blog</a>
             </li>
         </ul>
 
