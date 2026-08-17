@@ -10,18 +10,23 @@ class AdminUserSeeder extends Seeder
     /**
      * Seed the default local-dev admin account for the /control_admin panel.
      *
-     * DEV-ONLY CREDENTIALS — admin@admin.com / admin123.
-     * These are intentionally weak and predictable for local development convenience.
-     * This account (and password) MUST be changed/rotated before production deployment.
-     * See PROJECT_STATUS.md's Known Open Items for tracking.
+     * Credentials come from ADMIN_SEED_EMAIL / ADMIN_SEED_PASSWORD in .env
+     * (gitignored) so no real or default credential value is ever committed
+     * to source control. The fallbacks below only apply if those env vars
+     * are unset, and remain intentionally weak/predictable for local dev.
+     * This account (and password) MUST be changed/rotated before production
+     * deployment. See PROJECT_STATUS.md's Known Open Items for tracking.
      */
     public function run(): void
     {
+        $email = env('ADMIN_SEED_EMAIL', 'admin@admin.com');
+        $password = env('ADMIN_SEED_PASSWORD', 'admin123');
+
         User::updateOrCreate(
-            ['email' => 'admin@admin.com'],
+            ['email' => $email],
             [
                 'name' => 'Admin',
-                'password' => 'admin123',
+                'password' => $password,
             ]
         );
     }
