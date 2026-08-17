@@ -1,4 +1,4 @@
-<section class="relative isolate flex min-h-[90vh] w-full items-end overflow-hidden">
+<section class="relative isolate flex min-h-[95vh] w-full items-end overflow-hidden">
     <img
         src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2400&auto=format&fit=crop"
         alt="Himalayan mountain range at sunrise"
@@ -6,7 +6,7 @@
     >
     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
 
-    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 lg:px-8">
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 lg:px-8">
         <p class="font-body text-sm font-semibold uppercase tracking-[0.25em] text-white/90">
             Your Journey Begins Here
         </p>

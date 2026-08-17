@@ -11,18 +11,23 @@
         </a>
 
         <!-- Centered nav links -->
+        @php
+            $navLink = fn (bool $active) => $active
+                ? 'font-body text-sm font-medium text-primary'
+                : 'font-body text-sm font-medium text-text-primary transition-colors hover:text-primary';
+        @endphp
         <ul class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 md:flex">
             <li>
-                <a href="{{ url('/') }}" class="font-body text-sm font-medium text-primary">Home</a>
+                <a href="{{ url('/') }}" class="{{ $navLink(request()->is('/')) }}">Home</a>
             </li>
             <li>
-                <a href="#" class="font-body text-sm font-medium text-text-primary transition-colors hover:text-primary">Packages</a>
+                <a href="{{ url('/packages') }}" class="{{ $navLink(request()->is('packages*')) }}">Packages</a>
             </li>
             <li>
-                <a href="#" class="font-body text-sm font-medium text-text-primary transition-colors hover:text-primary">About Us</a>
+                <a href="{{ url('/about') }}" class="{{ $navLink(request()->is('about*')) }}">About Us</a>
             </li>
             <li>
-                <a href="#" class="font-body text-sm font-medium text-text-primary transition-colors hover:text-primary">Blog</a>
+                <a href="#" class="{{ $navLink(request()->is('blog*')) }}">Blog</a>
             </li>
         </ul>
 

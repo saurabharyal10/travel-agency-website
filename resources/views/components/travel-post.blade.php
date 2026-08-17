@@ -1,5 +1,5 @@
 @php
-    $instagramPosts = collect([1, 2, 3, 4])
+    $instagramPosts = collect([1, 2, 3, 4, 5, 6])
         ->map(fn ($i) => "images/instagram/{$i}.png")
         ->filter(fn ($path) => file_exists(public_path($path)));
 @endphp
@@ -33,7 +33,7 @@
                     <a href="#" class="font-body text-sm font-semibold text-primary">@travel</a>
                 </div>
 
-                <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                     @foreach ($instagramPosts as $post)
                         <div class="aspect-[3/2] overflow-hidden rounded-xl bg-text-secondary/10">
                             <img

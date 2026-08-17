@@ -27,11 +27,10 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
             <div class="relative mx-auto aspect-square w-full max-w-md">
-                <div class="absolute inset-0 rounded-full bg-background/10"></div>
                 <img
                     src="{{ asset('images/why-journey-guide.png') }}"
                     alt="Himalayan Heritage trekking guide"
-                    class="absolute inset-10 h-[calc(100%-5rem)] w-[calc(100%-5rem)] rounded-3xl object-cover shadow-xl"
+                    class="h-full w-full rounded-3xl object-cover shadow-xl"
                 >
             </div>
 

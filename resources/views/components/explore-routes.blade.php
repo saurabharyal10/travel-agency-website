@@ -2,10 +2,10 @@
     <img
         src="{{ asset('images/map-explore-routes.png') }}"
         alt=""
-        class="absolute inset-0 h-full w-full object-cover opacity-30"
+        class="absolute inset-0 h-full w-full object-cover"
         aria-hidden="true"
     >
-    <div class="absolute inset-0 bg-secondary/70"></div>
+    <div class="absolute inset-0 bg-secondary/55"></div>
 
     <div class="relative mx-auto max-w-2xl px-6 text-center lg:px-8">
         <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/40 text-white">
