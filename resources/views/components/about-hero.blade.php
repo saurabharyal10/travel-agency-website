@@ -11,7 +11,7 @@
     </span>
 
     <div class="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
-        <p class="font-body text-sm font-semibold uppercase tracking-[0.25em] text-white/80">Since 2026</p>
+        <p class="font-body text-sm font-semibold uppercase tracking-[0.25em] text-white/80">Since 2005</p>
 
         <h1 class="mt-4 max-w-2xl font-heading text-h2 font-bold leading-tight text-white sm:text-h1">
             Creating Memorable Journeys Across
