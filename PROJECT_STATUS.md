@@ -106,6 +106,7 @@ Fully built and verified against Figma, section by section:
 - [ ] Package "Book Now" / "Enquire" buttons not wired to a real backend flow
 - [ ] 3 of 6 packages using placeholder images/content pending client's final package list
 - [ ] Instagram section images are cropped screenshots, not clean exports (cosmetic, low priority)
+- [ ] **Admin panel is using dev credentials (`admin@admin.com` / `admin123`, seeded via `database/seeders/AdminUserSeeder.php`) — must be rotated to a strong, unique password before production deployment**
 
 ---
 
