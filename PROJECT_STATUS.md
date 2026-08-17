@@ -93,8 +93,8 @@ Fully built and verified against Figma, section by section:
 - **All "Read More" / "Read Article" / "Explore Stories" links are placeholders** — individual blog post detail pages not yet built
 
 ### Filament Admin CMS (`/control_admin`, renamed from `/admin`)
-Already exists from initial project scaffold, includes resources for:
-- Packages, Destinations, Enquiries (New/Contacted/Converted pipeline), BlogPosts, Testimonials, TeamMembers, SiteSettings
+**Correction (2026-08-17):** this section previously claimed Packages, Destinations, Enquiries, BlogPosts, Testimonials, TeamMembers, and SiteSettings resources already existed from the initial scaffold. That was inaccurate — `app/Filament/` did not exist before this session, and `app/Models/` only had `User.php`. The panel was a bare login with no resources. Packages content still lives only in the static `resources/data/packages.php` file, not the database.
+- Only resource that actually exists: `ContactMessage` (built this session, see Task 2 below)
 
 ---
 
@@ -119,16 +119,16 @@ Already exists from initial project scaffold, includes resources for:
 | # | Task | Status | Detail |
 |---|---|---|---|
 | 1 | Rename admin URL | ✅ Done | `/admin` → `/control_admin` via `->path('control_admin')` in `AdminPanelProvider.php`. Panel `id()` left as `admin` (internal only, not part of the URL) so existing `filament.admin.*` named routes are unaffected. Verified: old `/admin` now 404s, new `/control_admin` redirects to `/control_admin/login` (200, no console errors), caches cleared (`route:clear`, `config:clear`, `view:clear`, `filament:cache-components`) |
-| 2 | New: Contact Messages resource | Not started | Separate from Package Enquiries. Fields: name, email, subject, message, is_read (boolean), created_at. For a general "Contact Us" page form, distinct from package-specific "Enquire" submissions |
-| 3 | Review existing resources | Not started | Packages, Destinations, Enquiries, BlogPosts, Testimonials, TeamMembers, SiteSettings — confirm all are polished and functioning correctly |
+| 2 | New: Contact Messages resource | ✅ Done | `ContactMessage` model + migration (name, email, subject nullable, message, is_read boolean default false, timestamps) + `ContactMessageResource` (form + table with search/sort/read-status filter). Verified full CRUD (create, list, edit/toggle read, bulk delete) live in the panel |
+| 3 | Build remaining resources | Not started (scope correction) | Packages, Destinations, Enquiries, BlogPosts, Testimonials, TeamMembers, SiteSettings do not exist yet — these need to be built from scratch, not "reviewed." Packages in particular needs a decision on whether to migrate off the static `resources/data/packages.php` file into the database |
 | 4 | Dashboard widgets | Not started | Custom stat-card widgets: total active packages, new enquiries this week, new contact messages this week, total published blog posts |
 | 5 | Custom brand theming | Not started | Apply site's color tokens (#D91E18 primary / #10542C secondary) and fonts to the Filament panel UI itself, so admin area feels cohesive with the public site rather than generic Filament styling |
 | 6 | Admin Users (if needed) | Not started — needs client input | Manage staff/client login accounts to the panel, if client wants their own team members with access. **Do not build this speculatively — confirm with client first whether they want multiple admin accounts/roles at all before designing it.** |
 
 ### Execution order (planned)
 1. ✅ Rename panel path (quick, low-risk, do first) — done
-2. Build Contact Messages resource (new functionality)
-3. Review/polish existing resources
+2. ✅ Build Contact Messages resource — done
+3. Build remaining resources (Packages, Destinations, Enquiries, BlogPosts, Testimonials, TeamMembers, SiteSettings) — none exist yet, see correction above
 4. Apply custom brand theming
 5. Build dashboard widgets last (they depend on other modules' data to be meaningful)
 
