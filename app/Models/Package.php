@@ -22,6 +22,12 @@ class Package extends Model
         'inclusions',
         'exclusions',
         'is_active',
+        'trip_grade',
+        'group_size_min',
+        'group_size_max',
+        'best_season',
+        'meals_note',
+        'accommodation_note',
     ];
 
     protected $casts = [
@@ -32,11 +38,18 @@ class Package extends Model
         'inclusions' => 'array',
         'exclusions' => 'array',
         'is_active' => 'boolean',
+        'group_size_min' => 'integer',
+        'group_size_max' => 'integer',
     ];
 
     public function enquiries()
     {
         return $this->hasMany(Enquiry::class);
+    }
+
+    public function pricingTiers()
+    {
+        return $this->hasMany(PricingTier::class)->orderBy('sort_order');
     }
 
     protected function formattedPrice(): Attribute
