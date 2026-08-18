@@ -2,6 +2,10 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Widgets\ActivePackagesWidget;
+use App\Filament\Widgets\NewContactMessagesWidget;
+use App\Filament\Widgets\NewEnquiriesWidget;
+use App\Filament\Widgets\PublishedBlogPostsWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -42,6 +46,10 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
+                ActivePackagesWidget::class,
+                NewEnquiriesWidget::class,
+                NewContactMessagesWidget::class,
+                PublishedBlogPostsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
