@@ -50,6 +50,7 @@ class BlogPostResource extends Resource
                     ->rows(2)
                     ->columnSpanFull(),
                 Forms\Components\RichEditor::make('content')
+                    ->dehydrateStateUsing(fn (?string $state): ?string => filled($state) ? \Illuminate\Support\Str::sanitizeHtml($state) : $state)
                     ->columnSpanFull(),
             ])
             ->columns(2);

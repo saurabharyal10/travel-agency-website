@@ -75,10 +75,15 @@ class PackageResource extends Resource
                                             ->placeholder('e.g. Mar–May, Sep–Nov'),
                                         Forms\Components\TextInput::make('group_size_min')
                                             ->label('Min Group Size')
-                                            ->numeric(),
+                                            ->integer()
+                                            ->minValue(1)
+                                            ->maxValue(500),
                                         Forms\Components\TextInput::make('group_size_max')
                                             ->label('Max Group Size')
-                                            ->numeric(),
+                                            ->integer()
+                                            ->minValue(1)
+                                            ->maxValue(500)
+                                            ->gte('group_size_min'),
                                         Forms\Components\TextInput::make('meals_note')
                                             ->maxLength(255)
                                             ->placeholder('e.g. Breakfast included daily')
@@ -119,15 +124,22 @@ class PackageResource extends Resource
                                     ->schema([
                                         Forms\Components\TextInput::make('pax_min')
                                             ->label('Pax Min')
-                                            ->numeric()
+                                            ->integer()
+                                            ->minValue(1)
+                                            ->maxValue(500)
                                             ->required(),
                                         Forms\Components\TextInput::make('pax_max')
                                             ->label('Pax Max')
-                                            ->numeric()
+                                            ->integer()
+                                            ->minValue(1)
+                                            ->maxValue(500)
+                                            ->gte('pax_min')
                                             ->helperText('Leave blank for "and above"'),
                                         Forms\Components\TextInput::make('price_per_person')
                                             ->label('Price per Person')
                                             ->numeric()
+                                            ->minValue(0)
+                                            ->maxValue(999999)
                                             ->prefix('$')
                                             ->required(),
                                     ])
@@ -199,6 +211,8 @@ class PackageResource extends Resource
                                                     ->required(),
                                                 Forms\Components\RichEditor::make('content')
                                                     ->required()
+                                                    ->maxLength(5000)
+                                                    ->dehydrateStateUsing(fn (?string $state): ?string => filled($state) ? \Illuminate\Support\Str::sanitizeHtml($state) : $state)
                                                     ->columnSpanFull(),
                                             ])
                                             ->columns(1)
@@ -227,6 +241,7 @@ class PackageResource extends Resource
                                             ->columnSpanFull(),
                                         Forms\Components\Textarea::make('answer')
                                             ->required()
+                                            ->maxLength(2000)
                                             ->rows(3)
                                             ->columnSpanFull(),
                                     ])

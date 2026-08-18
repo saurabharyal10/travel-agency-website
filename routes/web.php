@@ -14,7 +14,10 @@ Route::get('/packages', function () {
 });
 
 Route::get('/packages/{slug}', function (string $slug) {
-    $package = Package::where('slug', $slug)->where('is_active', true)->first();
+    $package = Package::where('slug', $slug)
+        ->where('is_active', true)
+        ->with(['pricingTiers', 'faqs', 'preparationTips'])
+        ->first();
 
     abort_unless($package, 404);
 
