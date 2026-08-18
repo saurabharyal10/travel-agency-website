@@ -82,4 +82,25 @@ class Package extends Model
             get: fn () => collect($this->gallery ?? [])->map(fn (string $path) => asset('storage/'.$path))->all(),
         );
     }
+
+    protected function groupSizeLabel(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                if ($this->group_size_min && $this->group_size_max) {
+                    return "{$this->group_size_min}–{$this->group_size_max} people";
+                }
+
+                if ($this->group_size_min) {
+                    return "{$this->group_size_min}+ people";
+                }
+
+                if ($this->group_size_max) {
+                    return "Up to {$this->group_size_max} people";
+                }
+
+                return null;
+            },
+        );
+    }
 }
