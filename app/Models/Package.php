@@ -49,14 +49,14 @@ class Package extends Model
     protected function imageUrl(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->image ? asset($this->image) : null,
+            get: fn () => $this->image ? asset('storage/'.$this->image) : null,
         );
     }
 
     protected function galleryUrls(): Attribute
     {
         return Attribute::make(
-            get: fn () => collect($this->gallery ?? [])->map(fn (string $path) => asset($path))->all(),
+            get: fn () => collect($this->gallery ?? [])->map(fn (string $path) => asset('storage/'.$path))->all(),
         );
     }
 }
