@@ -41,6 +41,9 @@
                         </svg>
                         <span class="font-body text-sm text-text-secondary">WhatsApp Us</span>
                     </li>
+                    <li>
+                        <a href="{{ url('/contact') }}" class="font-body text-sm font-semibold text-primary transition-colors hover:text-primary/80">Send us a message</a>
+                    </li>
                 </ul>
             </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\PackageEnquiryController;
 use App\Models\BlogPost;
 use App\Models\Package;
@@ -45,6 +46,9 @@ Route::get('/blog/{slug}', function (string $slug) {
 
     return view('blog-post', ['post' => $post]);
 })->name('blog.show');
+
+Route::get('/contact', [ContactMessageController::class, 'create'])->name('contact');
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 Route::get('/theme-test', function () {
     return view('theme-test');
