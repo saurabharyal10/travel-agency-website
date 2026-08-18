@@ -52,6 +52,16 @@ class Package extends Model
         return $this->hasMany(PricingTier::class)->orderBy('sort_order');
     }
 
+    public function faqs()
+    {
+        return $this->hasMany(PackageFaq::class)->orderBy('sort_order');
+    }
+
+    public function preparationTips()
+    {
+        return $this->hasMany(PackagePreparationTip::class);
+    }
+
     protected function formattedPrice(): Attribute
     {
         return Attribute::make(
