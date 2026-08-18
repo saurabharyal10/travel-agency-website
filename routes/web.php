@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PackageEnquiryController;
+use App\Models\BlogPost;
 use App\Models\Package;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,17 @@ Route::get('/about', function () {
 Route::get('/blog', function () {
     return view('blog');
 });
+
+Route::get('/blog/{slug}', function (string $slug) {
+    $post = BlogPost::where('slug', $slug)
+        ->whereNotNull('published_at')
+        ->where('published_at', '<=', now())
+        ->first();
+
+    abort_unless($post, 404);
+
+    return view('blog-post', ['post' => $post]);
+})->name('blog.show');
 
 Route::get('/theme-test', function () {
     return view('theme-test');

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class BlogPost extends Model
@@ -23,4 +24,11 @@ class BlogPost extends Model
         'read_minutes' => 'integer',
         'published_at' => 'datetime',
     ];
+
+    protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->image ? asset('storage/'.$this->image) : null,
+        );
+    }
 }
