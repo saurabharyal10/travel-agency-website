@@ -1,5 +1,10 @@
 <?php
 
+// DEPRECATED: no longer read by the app. Packages now live in the
+// `packages` database table (see database/seeders/PackageSeeder.php,
+// which originally migrated this exact data). Kept here temporarily
+// to diff against if needed — safe to delete once confirmed unused.
+
 return [
     [
         'slug' => 'pokhara',

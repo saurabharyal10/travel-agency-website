@@ -1,5 +1,5 @@
 @php
-    $packages = require resource_path('data/packages.php');
+    $packages = \App\Models\Package::where('is_active', true)->orderBy('id')->get();
 
     $badgeStyles = [
         'featured' => 'bg-primary text-white',
@@ -27,7 +27,7 @@
                 <article>
                     <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-text-secondary/10">
                         <img
-                            src="{{ $package['image'] }}"
+                            src="{{ $package['image_url'] }}"
                             alt="{{ $package['title'] }}"
                             class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                         >
@@ -48,7 +48,7 @@
                     <div class="mt-4 flex items-center justify-between">
                         <div>
                             <span class="block font-body text-xs text-text-secondary">Starting from</span>
-                            <span class="font-heading text-lg font-bold text-text-primary">{{ $package['price'] }}</span>
+                            <span class="font-heading text-lg font-bold text-text-primary">{{ $package['formatted_price'] }}</span>
                         </div>
                         <a href="{{ url('/packages/'.$package['slug']) }}" class="rounded-full bg-primary px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary/90">
                             Details

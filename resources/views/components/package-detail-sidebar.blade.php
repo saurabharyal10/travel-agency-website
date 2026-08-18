@@ -23,7 +23,7 @@
 
     <div class="mt-4">
         <span class="block font-body text-xs text-text-secondary">Starting from</span>
-        <span class="font-heading text-3xl font-bold text-text-primary">{{ $package['price'] }}</span>
+        <span class="font-heading text-3xl font-bold text-text-primary">{{ $package['formatted_price'] }}</span>
         <span class="font-body text-sm text-text-secondary"> / person</span>
     </div>
 

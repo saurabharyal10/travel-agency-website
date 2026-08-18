@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PackageEnquiryController;
+use App\Models\Package;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,8 +13,7 @@ Route::get('/packages', function () {
 });
 
 Route::get('/packages/{slug}', function (string $slug) {
-    $package = collect(require resource_path('data/packages.php'))
-        ->firstWhere('slug', $slug);
+    $package = Package::where('slug', $slug)->where('is_active', true)->first();
 
     abort_unless($package, 404);
 

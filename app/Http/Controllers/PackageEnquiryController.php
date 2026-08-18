@@ -12,8 +12,7 @@ class PackageEnquiryController extends Controller
 {
     public function create(string $slug): View
     {
-        $package = collect(require resource_path('data/packages.php'))
-            ->firstWhere('slug', $slug);
+        $package = Package::where('slug', $slug)->where('is_active', true)->first();
 
         abort_unless($package, 404);
 
@@ -27,8 +26,7 @@ class PackageEnquiryController extends Controller
 
     public function store(Request $request, string $slug): RedirectResponse
     {
-        $package = collect(require resource_path('data/packages.php'))
-            ->firstWhere('slug', $slug);
+        $package = Package::where('slug', $slug)->where('is_active', true)->first();
 
         abort_unless($package, 404);
 
@@ -39,29 +37,17 @@ class PackageEnquiryController extends Controller
             'message' => ['required', 'string', 'max:2000'],
         ]);
 
-        $packageId = Package::where('slug', $slug)->value('id');
-
-        $message = $validated['message'];
-
-        if (! $packageId) {
-            // The public site's package pages still read from the static
-            // resources/data/packages.php file rather than the packages
-            // table, so there's often no matching row to relate to yet.
-            // Keep the package identified in the message text either way.
-            $message = "Package: {$package['title']} ({$slug})\n\n{$message}";
-        }
-
         Enquiry::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'] ?? null,
-            'package_id' => $packageId,
-            'message' => $message,
+            'package_id' => $package->id,
+            'message' => $validated['message'],
             'status' => 'new',
         ]);
 
         return redirect()
             ->route('packages.show', $slug)
-            ->with('enquiry_sent', $package['title']);
+            ->with('enquiry_sent', $package->title);
     }
 }

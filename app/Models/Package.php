@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
@@ -36,5 +37,26 @@ class Package extends Model
     public function enquiries()
     {
         return $this->hasMany(Enquiry::class);
+    }
+
+    protected function formattedPrice(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => '$'.number_format((float) $this->price),
+        );
+    }
+
+    protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->image ? asset($this->image) : null,
+        );
+    }
+
+    protected function galleryUrls(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => collect($this->gallery ?? [])->map(fn (string $path) => asset($path))->all(),
+        );
     }
 }

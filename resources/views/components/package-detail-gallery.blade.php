@@ -2,7 +2,7 @@
     <h2 class="font-heading text-h4 font-bold text-text-primary">Gallery</h2>
 
     <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        @foreach ($package['gallery'] as $photo)
+        @foreach ($package['gallery_urls'] as $photo)
             <div class="aspect-square overflow-hidden rounded-xl bg-text-secondary/10">
                 <img
                     src="{{ $photo }}"

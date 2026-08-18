@@ -1,6 +1,6 @@
 <section class="relative flex h-[420px] w-full items-end overflow-hidden">
     <img
-        src="{{ $package['image'] }}"
+        src="{{ $package['image_url'] }}"
         alt="{{ $package['title'] }}"
         class="absolute inset-0 -z-10 h-full w-full object-cover"
     >
