@@ -38,17 +38,23 @@
         </div>
     </dl>
 
+    @if (session('enquiry_sent') === $package['title'])
+        <div class="mt-6 rounded-xl border border-secondary/20 bg-secondary/5 p-4 font-body text-sm text-secondary">
+            Thanks! Your enquiry for {{ $package['title'] }} has been sent — we'll be in touch within 24 hours.
+        </div>
+    @endif
+
     @if ($isSoldOut)
         <button type="button" disabled class="mt-6 w-full cursor-not-allowed rounded-full bg-text-secondary/20 px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-text-secondary">
             Sold Out
         </button>
     @else
-        <a href="#" class="mt-6 block w-full rounded-full bg-primary px-6 py-3 text-center font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary/90">
+        <a href="{{ route('packages.enquire', ['slug' => $package['slug'], 'intent' => 'book']) }}" class="mt-6 block w-full rounded-full bg-primary px-6 py-3 text-center font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary/90">
             Book Now
         </a>
     @endif
 
-    <a href="#" class="mt-3 block w-full rounded-full border border-text-secondary/20 px-6 py-3 text-center font-body text-sm font-semibold uppercase tracking-wide text-text-primary transition-colors hover:border-primary hover:text-primary">
+    <a href="{{ route('packages.enquire', ['slug' => $package['slug'], 'intent' => 'enquire']) }}" class="mt-3 block w-full rounded-full border border-text-secondary/20 px-6 py-3 text-center font-body text-sm font-semibold uppercase tracking-wide text-text-primary transition-colors hover:border-primary hover:text-primary">
         Enquire
     </a>
 </div>
