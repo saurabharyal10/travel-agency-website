@@ -33,14 +33,23 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    $featuredPost = BlogPost::published()->where('is_featured', true)->orderByDesc('published_at')->first()
+        ?? BlogPost::published()->orderByDesc('published_at')->first();
+
+    $otherPosts = BlogPost::published()
+        ->when($featuredPost, fn ($query) => $query->where('id', '!=', $featuredPost->id))
+        ->orderByDesc('published_at')
+        ->get();
+
+    return view('blog', [
+        'featuredPost' => $featuredPost,
+        'stories' => $otherPosts->take(6),
+        'archive' => $otherPosts->slice(6, 4),
+    ]);
 });
 
 Route::get('/blog/{slug}', function (string $slug) {
-    $post = BlogPost::where('slug', $slug)
-        ->whereNotNull('published_at')
-        ->where('published_at', '<=', now())
-        ->first();
+    $post = BlogPost::published()->where('slug', $slug)->first();
 
     abort_unless($post, 404);
 
