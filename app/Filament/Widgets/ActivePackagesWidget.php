@@ -13,7 +13,8 @@ class ActivePackagesWidget extends BaseWidget
         return [
             Stat::make('Active Packages', Package::where('is_active', true)->count())
                 ->description('Currently active travel packages')
-                ->color('success'),
+                ->descriptionIcon('heroicon-o-globe-alt')
+                ->color('primary'),
         ];
     }
 }

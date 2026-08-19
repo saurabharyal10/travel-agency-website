@@ -3,9 +3,11 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Widgets\ActivePackagesWidget;
+use App\Filament\Widgets\EnquiriesChartWidget;
 use App\Filament\Widgets\NewContactMessagesWidget;
 use App\Filament\Widgets\NewEnquiriesWidget;
 use App\Filament\Widgets\PublishedBlogPostsWidget;
+use App\Filament\Widgets\RecentActivityWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -51,6 +53,8 @@ class AdminPanelProvider extends PanelProvider
                 NewEnquiriesWidget::class,
                 NewContactMessagesWidget::class,
                 PublishedBlogPostsWidget::class,
+                EnquiriesChartWidget::class,
+                RecentActivityWidget::class,
             ])
             ->plugin(
                 ActivitylogPlugin::make()

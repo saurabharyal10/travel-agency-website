@@ -15,6 +15,7 @@ class PublishedBlogPostsWidget extends BaseWidget
                 ->where('published_at', '<=', now())
                 ->count())
                 ->description('Live on the site')
+                ->descriptionIcon('heroicon-o-newspaper')
                 ->color('secondary'),
         ];
     }

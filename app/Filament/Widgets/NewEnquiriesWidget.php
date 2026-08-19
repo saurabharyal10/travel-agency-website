@@ -13,7 +13,8 @@ class NewEnquiriesWidget extends BaseWidget
         return [
             Stat::make('New Enquiries', Enquiry::where('created_at', '>=', now()->subDays(7))->count())
                 ->description('Received in the last 7 days')
-                ->color('primary'),
+                ->descriptionIcon('heroicon-o-chat-bubble-left-right')
+                ->color('secondary'),
         ];
     }
 }
