@@ -21,6 +21,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Rmsramos\Activitylog\ActivitylogPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -51,6 +52,12 @@ class AdminPanelProvider extends PanelProvider
                 NewContactMessagesWidget::class,
                 PublishedBlogPostsWidget::class,
             ])
+            ->plugin(
+                ActivitylogPlugin::make()
+                    ->navigationGroup('System')
+                    ->navigationIcon('heroicon-o-clipboard-document-list')
+                    ->isResourceActionHidden(false)
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Enquiry extends Model
 {
+    use LogsActivity;
+
     public const STATUSES = [
         'new' => 'New',
         'contacted' => 'Contacted',
@@ -24,5 +28,13 @@ class Enquiry extends Model
     public function package()
     {
         return $this->belongsTo(Package::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly($this->fillable)
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
     }
 }
