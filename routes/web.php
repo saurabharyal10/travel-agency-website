@@ -6,6 +6,8 @@ use App\Models\BlogPost;
 use App\Models\Package;
 use Illuminate\Support\Facades\Route;
 
+// trigger redeploy
+
 Route::get('/', function () {
     return view('welcome');
 });
