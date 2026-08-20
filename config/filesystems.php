@@ -43,6 +43,12 @@ return [
             'root' => storage_path('app/public'),
             'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
+            // Serve uploads via Laravel's built-in /storage/{path} route instead of
+            // requiring a public/storage symlink. Wasmer's free tier has no shell/
+            // artisan access to run `storage:link`, and its sandboxed filesystem
+            // treats symlinks as a special, restricted case (see its packaging
+            // validator rejecting absolute symlinks) — safer to avoid them entirely.
+            'serve' => true,
             'throw' => false,
             'report' => false,
         ],
