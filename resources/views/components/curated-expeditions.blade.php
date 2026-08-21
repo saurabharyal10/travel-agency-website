@@ -1,30 +1,9 @@
 @php
-    $expeditions = [
-        [
-            'title' => 'Pokhara',
-            'description' => 'The ultimate pilgrimage for mountain lovers through the Annapurna foothills and turquoise lakes.',
-            'duration' => '6 Days',
-            'price' => '$1,650',
-            'featured' => true,
-            'image' => asset('images/packages/pokhara.png'),
-        ],
-        [
-            'title' => 'Chitwan Safari',
-            'description' => 'Explore the sub-tropical jungles and encounter the endangered one-horned rhino.',
-            'duration' => '3 Days',
-            'price' => '$950',
-            'featured' => false,
-            'image' => asset('images/packages/chitwan-safari.png'),
-        ],
-        [
-            'title' => 'Mustang',
-            'description' => 'Discover the forbidden kingdom of Lo, a pocket of Tibetan culture hidden beyond the Himalaya.',
-            'duration' => '8 Days',
-            'price' => '$1,850',
-            'featured' => false,
-            'image' => asset('images/packages/mustang.png'),
-        ],
-    ];
+    $expeditions = \App\Models\Package::where('is_active', true)
+        ->orderByRaw("CASE WHEN badge = 'featured' THEN 0 ELSE 1 END")
+        ->orderBy('id')
+        ->take(3)
+        ->get();
 @endphp
 
 <section class="bg-background py-20 sm:py-28">
@@ -56,28 +35,28 @@
                 <article>
                     <div class="relative aspect-[4/5] overflow-hidden rounded-2xl bg-text-secondary/10">
                         <img
-                            src="{{ $expedition['image'] }}"
-                            alt="{{ $expedition['title'] }}"
+                            src="{{ $expedition->image_url }}"
+                            alt="{{ $expedition->title }}"
                             class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                         >
 
-                        @if ($expedition['featured'])
+                        @if ($expedition->badge === 'featured')
                             <span class="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-white">
                                 Featured
                             </span>
                         @endif
 
                         <span class="absolute right-4 top-4 rounded-full bg-white px-3 py-1 font-body text-xs font-semibold text-text-primary">
-                            From {{ $expedition['price'] }}
+                            From {{ $expedition->formatted_price }}
                         </span>
 
                         <span class="absolute bottom-4 left-4 rounded-full bg-black/60 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-white">
-                            {{ $expedition['duration'] }}
+                            {{ $expedition->duration }}
                         </span>
                     </div>
 
-                    <h3 class="mt-5 font-heading text-h5 font-bold text-text-primary">{{ $expedition['title'] }}</h3>
-                    <p class="mt-2 line-clamp-1 font-body text-sm text-text-secondary">{{ $expedition['description'] }}</p>
+                    <h3 class="mt-5 font-heading text-h5 font-bold text-text-primary">{{ $expedition->title }}</h3>
+                    <p class="mt-2 line-clamp-1 font-body text-sm text-text-secondary">{{ $expedition->description }}</p>
 
                     <a href="#" class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold uppercase tracking-wide text-primary transition-colors hover:text-primary/80">
                         View Journeys
