@@ -33,7 +33,7 @@
 
         <!-- Actions -->
         <div class="flex shrink-0 items-center gap-4">
-            <a href="#" class="rounded-md bg-primary px-6 py-2.5 font-body text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-primary/90">
+            <a href="{{ url('/packages') }}" class="rounded-md bg-primary px-6 py-2.5 font-body text-sm font-semibold tracking-wide text-white uppercase transition-colors hover:bg-primary/90">
                 Plan My Trip
             </a>
             <button type="button" class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary/90" aria-label="Profile">
