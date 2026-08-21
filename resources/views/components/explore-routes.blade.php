@@ -20,7 +20,7 @@
             Interactive maps of every major trail across Nepal, Bhutan, and Tibet.
         </p>
 
-        <a href="#" class="mt-8 inline-block rounded-full border border-white px-8 py-3 font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-secondary">
+        <a href="{{ url('/packages') }}" class="mt-8 inline-block rounded-full border border-white px-8 py-3 font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-secondary">
             Open Map Explorer
         </a>
     </div>

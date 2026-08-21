@@ -58,7 +58,7 @@
                     <h3 class="mt-5 font-heading text-h5 font-bold text-text-primary">{{ $expedition->title }}</h3>
                     <p class="mt-2 line-clamp-1 font-body text-sm text-text-secondary">{{ $expedition->description }}</p>
 
-                    <a href="#" class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold uppercase tracking-wide text-primary transition-colors hover:text-primary/80">
+                    <a href="{{ route('packages.show', $expedition->slug) }}" class="mt-3 inline-flex items-center gap-1.5 font-body text-sm font-semibold uppercase tracking-wide text-primary transition-colors hover:text-primary/80">
                         View Journeys
                         <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

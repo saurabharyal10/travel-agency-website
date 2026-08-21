@@ -1,21 +1,10 @@
 <footer class="border-t border-text-secondary/10 bg-background">
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div class="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4">
+        <div class="grid grid-cols-2 gap-x-8 gap-y-12">
             <div>
                 <h3 class="font-body text-sm font-semibold uppercase tracking-wide text-text-primary">Company</h3>
                 <ul class="mt-4 space-y-3">
-                    <li><a href="#" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">About Our Journey</a></li>
-                    <li><a href="#" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">The Expert Team</a></li>
-                    <li><a href="#" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Careers with Purpose</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h3 class="font-body text-sm font-semibold uppercase tracking-wide text-text-primary">Travel Info</h3>
-                <ul class="mt-4 space-y-3">
-                    <li><a href="#" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Visa Requirements</a></li>
-                    <li><a href="#" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Insurance &amp; Safety</a></li>
-                    <li><a href="#" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Common Questions</a></li>
+                    <li><a href="{{ url('/about') }}" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">About Our Journey</a></li>
                 </ul>
             </div>
 
@@ -46,37 +35,10 @@
                     </li>
                 </ul>
             </div>
-
-            <div>
-                <h3 class="font-body text-sm font-semibold uppercase tracking-wide text-text-primary">Follow Us</h3>
-                <div class="mt-4 flex gap-3">
-                    <a href="#" aria-label="Facebook" class="flex h-9 w-9 items-center justify-center rounded-full border border-text-secondary/20 text-text-primary transition-colors hover:border-primary hover:text-primary">
-                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M14 9V6.5C14 5.67157 14.6716 5 15.5 5H17V2H15C12.2386 2 10 4.23858 10 7V9H7V12H10V22H14V12H17L18 9H14Z" fill="currentColor" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Instagram" class="flex h-9 w-9 items-center justify-center rounded-full border border-text-secondary/20 text-text-primary transition-colors hover:border-primary hover:text-primary">
-                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8" />
-                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" />
-                            <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="X (Twitter)" class="flex h-9 w-9 items-center justify-center rounded-full border border-text-secondary/20 text-text-primary transition-colors hover:border-primary hover:text-primary">
-                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M4 4L20 20M20 4L4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
         </div>
 
-        <div class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-text-secondary/10 pt-8 sm:flex-row">
+        <div class="mt-16 flex justify-center border-t border-text-secondary/10 pt-8">
             <p class="font-body text-xs text-text-secondary">&copy; {{ date('Y') }} Himalayan Heritage. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a href="#" class="font-body text-xs text-text-secondary transition-colors hover:text-primary">Privacy Policy</a>
-                <a href="#" class="font-body text-xs text-text-secondary transition-colors hover:text-primary">Terms &amp; Conditions</a>
-            </div>
         </div>
     </div>
 </footer>
