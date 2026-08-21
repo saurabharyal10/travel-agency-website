@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\PackageEnquiryController;
 use App\Models\BlogPost;
+use App\Models\Destination;
 use App\Models\Package;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,12 @@ Route::post('/packages/{slug}/enquire', [PackageEnquiryController::class, 'store
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::get('/destinations', function () {
+    $destinations = Destination::orderBy('sort_order')->orderBy('name')->get();
+
+    return view('destinations', ['destinations' => $destinations]);
+})->name('destinations');
 
 Route::get('/blog', function () {
     $featuredPost = BlogPost::published()->where('is_featured', true)->orderByDesc('published_at')->first()

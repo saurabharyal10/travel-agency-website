@@ -24,6 +24,9 @@
                 <a href="{{ url('/packages') }}" class="{{ $navLink(request()->is('packages*')) }}">Packages</a>
             </li>
             <li>
+                <a href="{{ url('/destinations') }}" class="{{ $navLink(request()->is('destinations*')) }}">Destinations</a>
+            </li>
+            <li>
                 <a href="{{ url('/about') }}" class="{{ $navLink(request()->is('about*')) }}">About Us</a>
             </li>
             <li>

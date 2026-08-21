@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Destination extends Model
@@ -20,4 +21,11 @@ class Destination extends Model
         'is_featured' => 'boolean',
         'sort_order' => 'integer',
     ];
+
+    protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->image ? asset('storage/'.$this->image) : null,
+        );
+    }
 }
