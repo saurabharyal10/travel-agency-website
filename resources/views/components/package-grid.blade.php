@@ -1,5 +1,18 @@
 @php
-    $packages = \App\Models\Package::where('is_active', true)->orderBy('id')->get();
+    $destination = trim((string) request('destination'));
+    $activity = trim((string) request('activity'));
+    $when = trim((string) request('when'));
+    $hasFilters = $destination !== '' || $activity !== '' || $when !== '';
+
+    $packages = \App\Models\Package::where('is_active', true)
+        ->when($destination !== '', fn ($query) => $query->where(fn ($query) => $query
+            ->where('title', 'like', "%{$destination}%")
+            ->orWhere('description', 'like', "%{$destination}%")
+        ))
+        ->when($activity !== '', fn ($query) => $query->where('category', $activity))
+        ->when($when !== '', fn ($query) => $query->where('best_season', 'like', "%{$when}%"))
+        ->orderBy('id')
+        ->get();
 
     $badgeStyles = [
         'featured' => 'bg-primary text-white',
@@ -16,10 +29,20 @@
 
 <section class="bg-background pb-24 sm:pb-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="border-b border-text-secondary/10 pb-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-text-secondary/10 pb-6">
             <p class="font-body text-sm text-text-secondary">
-                Showing {{ count($packages) }} curated journeys in Nepal
+                @if ($hasFilters)
+                    Showing {{ count($packages) }} journeys matching your search
+                @else
+                    Showing {{ count($packages) }} curated journeys in Nepal
+                @endif
             </p>
+
+            @if ($hasFilters)
+                <a href="{{ url('/packages') }}" class="font-body text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                    Clear filters
+                </a>
+            @endif
         </div>
 
         <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
