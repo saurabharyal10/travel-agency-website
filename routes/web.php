@@ -30,7 +30,9 @@ Route::get('/packages/{slug}', function (string $slug) {
 })->name('packages.show');
 
 Route::get('/packages/{slug}/enquire', [PackageEnquiryController::class, 'create'])->name('packages.enquire');
-Route::post('/packages/{slug}/enquire', [PackageEnquiryController::class, 'store'])->name('packages.enquire.store');
+Route::post('/packages/{slug}/enquire', [PackageEnquiryController::class, 'store'])
+    ->middleware('throttle:6,1')
+    ->name('packages.enquire.store');
 
 Route::get('/about', function () {
     return view('about');
@@ -67,9 +69,13 @@ Route::get('/blog/{slug}', function (string $slug) {
 })->name('blog.show');
 
 Route::get('/contact', [ContactMessageController::class, 'create'])->name('contact');
-Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactMessageController::class, 'store'])
+    ->middleware('throttle:6,1')
+    ->name('contact.store');
 
-Route::post('/newsletter', [NewsletterSubscriberController::class, 'store'])->name('newsletter.store');
+Route::post('/newsletter', [NewsletterSubscriberController::class, 'store'])
+    ->middleware('throttle:6,1')
+    ->name('newsletter.store');
 
 if (app()->environment('local')) {
     Route::get('/theme-test', function () {
