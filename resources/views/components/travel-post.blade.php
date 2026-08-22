@@ -13,11 +13,31 @@
                     Stories from the trail, cultural insights, and early access to our seasonal departures.
                 </p>
 
-                <form class="mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+                @if (session('newsletter_subscribed'))
+                    <div class="mt-6 max-w-md rounded-2xl border border-secondary/20 bg-secondary/5 p-4 font-body text-sm text-secondary">
+                        Thanks for subscribing! Keep an eye on your inbox.
+                    </div>
+                @endif
+
+                @if ($errors->newsletter->any())
+                    <div class="mt-6 max-w-md rounded-2xl border border-primary/20 bg-primary/5 p-4 font-body text-sm text-primary">
+                        <ul class="list-inside list-disc space-y-1">
+                            @foreach ($errors->newsletter->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('newsletter.store') }}" class="mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+                    @csrf
                     <label for="newsletter-email" class="sr-only">Email address</label>
                     <input
                         id="newsletter-email"
+                        name="email"
                         type="email"
+                        value="{{ old('email') }}"
+                        required
                         placeholder="Your email address"
                         class="w-full rounded-full border border-text-secondary/20 bg-white px-5 py-3 font-body text-sm text-text-primary placeholder:text-text-secondary/60 focus:border-secondary focus:outline-none"
                     >

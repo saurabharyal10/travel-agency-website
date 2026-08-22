@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\NewsletterSubscriberController;
 use App\Http\Controllers\PackageEnquiryController;
 use App\Models\BlogPost;
 use App\Models\Destination;
@@ -67,6 +68,8 @@ Route::get('/blog/{slug}', function (string $slug) {
 
 Route::get('/contact', [ContactMessageController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+
+Route::post('/newsletter', [NewsletterSubscriberController::class, 'store'])->name('newsletter.store');
 
 Route::get('/theme-test', function () {
     return view('theme-test');
