@@ -97,6 +97,7 @@ Fully built and verified against Figma, section by section:
 - Resources that exist now: `ContactMessage`, `Destination`, `Package`, `Enquiry`, `BlogPost` (all Filament Resources), plus a singleton `ManageSiteSettings` page. All admin-only — the public site still reads Packages from the static `resources/data/packages.php` file and Destinations/regions from a hardcoded array in `regions.blade.php`; wiring the frontend to the database is a separate, not-yet-scheduled task.
 - `Testimonials` and `TeamMembers` were explicitly deferred — no frontend section exists yet to consume them, so building CRUD for them was skipped until there's a page that needs the content (client decision, 2026-08-17).
 - `Enquiry` includes the New/Contacted/Converted status pipeline and an optional `package_id` relationship to `Package`, but the frontend "Book Now"/"Enquire" buttons are still not wired to create records here.
+- **Admin credentials (resolved, 2026-08-22):** the seeded admin login is sourced from `ADMIN_SEED_EMAIL`/`ADMIN_SEED_PASSWORD` in `.env` (gitignored, currently set). `admin@admin.com`/`admin123` only remain in `database/seeders/AdminUserSeeder.php` as documented, intentional fallback defaults used if those env vars are unset — not what's actually seeded. Fixed in commit `e8fc942` ("Remove guessable test-admin account from DatabaseSeeder").
 
 ---
 
@@ -108,7 +109,6 @@ Fully built and verified against Figma, section by section:
 - [ ] Package "Book Now" / "Enquire" buttons not wired to a real backend flow
 - [ ] 3 of 6 packages using placeholder images/content pending client's final package list
 - [ ] Instagram section images are cropped screenshots, not clean exports (cosmetic, low priority)
-- [ ] **Admin panel is using dev credentials (`admin@admin.com` / `admin123`, seeded via `database/seeders/AdminUserSeeder.php`) — must be rotated to a strong, unique password before production deployment**
 
 ---
 
