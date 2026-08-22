@@ -71,6 +71,8 @@ Route::post('/contact', [ContactMessageController::class, 'store'])->name('conta
 
 Route::post('/newsletter', [NewsletterSubscriberController::class, 'store'])->name('newsletter.store');
 
-Route::get('/theme-test', function () {
-    return view('theme-test');
-});
+if (app()->environment('local')) {
+    Route::get('/theme-test', function () {
+        return view('theme-test');
+    });
+}
