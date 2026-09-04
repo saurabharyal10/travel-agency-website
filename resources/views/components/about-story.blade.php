@@ -12,7 +12,7 @@
             <div class="overflow-hidden rounded-2xl">
                 <img
                     src="{{ asset('images/our_story_img.png') }}"
-                    alt="Himalayan Heritage guide with local community"
+                    alt="Trekking guide with local community"
                     class="h-full w-full object-cover"
                 >
             </div>
@@ -21,7 +21,7 @@
                 <h2 class="font-heading text-h3 font-bold text-text-primary">Our Story</h2>
 
                 <p class="mt-5 font-body text-sm text-text-secondary sm:text-base">
-                    Himalayan Heritage began with a simple belief: that travel should leave a place better than it found it. What started as a handful of guided treks through the Annapurna foothills has grown into a network of local guides, homestays, and community partners across Nepal.
+                    Our journey began with a simple belief: that travel should leave a place better than it found it. What started as a handful of guided treks through the Annapurna foothills has grown into a network of local guides, homestays, and community partners across Nepal.
                 </p>
                 <p class="mt-4 font-body text-sm text-text-secondary sm:text-base">
                     Every itinerary we build is rooted in that same principle — real connection with the mountains and the people who call them home, without compromising on comfort, safety, or care.

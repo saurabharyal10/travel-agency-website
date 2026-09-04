@@ -64,7 +64,7 @@ class ManageSiteSettings extends Page implements HasForms
                     ->schema([
                         TextInput::make('footer_copyright_text')
                             ->maxLength(255)
-                            ->placeholder('© 2026 Himalayan Heritage. All rights reserved.'),
+                            ->placeholder('© 2026 TRAVEL. All rights reserved.'),
                     ]),
             ])
             ->statePath('data');

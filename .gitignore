@@ -25,3 +25,8 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 .claude/settings.local.json
+
+# SSH keys / secrets
+*.pem
+/docs/.claude-notes/
+/assets/source/
