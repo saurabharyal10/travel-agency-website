@@ -29,7 +29,7 @@
             <div class="relative mx-auto aspect-square w-full max-w-md">
                 <img
                     src="{{ asset('images/why-journey-guide.png') }}"
-                    alt="Himalayan Heritage trekking guide"
+                    alt="Trekking guide"
                     class="h-full w-full rounded-3xl object-cover shadow-xl"
                 >
             </div>

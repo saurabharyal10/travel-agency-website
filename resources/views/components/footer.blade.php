@@ -38,7 +38,10 @@
         </div>
 
         <div class="mt-16 flex justify-center border-t border-text-secondary/10 pt-8">
-            <p class="font-body text-xs text-text-secondary">&copy; {{ date('Y') }} Himalayan Heritage. All rights reserved.</p>
+            <p class="font-body text-xs text-text-secondary">
+                &copy; {{ date('Y') }} TRAVEL. All rights reserved. &middot; Crafted by
+                <a href="https://saurabh-aryal.com.np" target="_blank" rel="noopener" class="text-text-secondary/70 underline decoration-text-secondary/30 underline-offset-2 transition-colors hover:text-text-secondary hover:decoration-text-secondary">Saurabh Aryal</a>
+            </p>
         </div>
     </div>
 </footer>
