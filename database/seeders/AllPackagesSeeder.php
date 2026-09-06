@@ -711,9 +711,9 @@ class AllPackagesSeeder extends Seeder
                 'description' => 'A quick, budget-friendly introduction to Chitwan National Park — jungle safari, river canoeing, and Tharu culture packed into a tight two-day trip.',
                 'price' => '650.00',
                 'badge' => null,
-                'image' => 'packages/chitwan-safari.webp',
+                'image' => 'packages/chitwan-wildlife-safari.webp',
                 'gallery' => [
-                    'packages/chitwan-safari.webp',
+                    'packages/chitwan-wildlife-safari.webp',
                     'packages/gallery/chitwan-safari-2.webp',
                     'packages/gallery/chitwan-safari-3.webp',
                     'packages/gallery/chitwan-wildlife-safari-4.webp',
