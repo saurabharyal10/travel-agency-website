@@ -12,7 +12,8 @@
         ->when($activity !== '', fn ($query) => $query->where('category', $activity))
         ->when($when !== '', fn ($query) => $query->where('best_season', 'like', "%{$when}%"))
         ->orderBy('id')
-        ->get();
+        ->paginate(6)
+        ->withQueryString();
 
     $badgeStyles = [
         'featured' => 'bg-primary text-white',
@@ -32,9 +33,9 @@
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-text-secondary/10 pb-6">
             <p class="font-body text-sm text-text-secondary">
                 @if ($hasFilters)
-                    Showing {{ count($packages) }} journeys matching your search
+                    Showing {{ $packages->total() }} journeys matching your search
                 @else
-                    Showing {{ count($packages) }} curated journeys in Nepal
+                    Showing {{ $packages->total() }} curated journeys in Nepal
                 @endif
             </p>
 
@@ -80,5 +81,7 @@
                 </article>
             @endforeach
         </div>
+
+        <x-pagination :paginator="$packages" />
     </div>
 </section>

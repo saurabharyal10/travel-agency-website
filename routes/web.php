@@ -39,7 +39,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/destinations', function () {
-    $destinations = Destination::withCount('packages')->orderBy('sort_order')->orderBy('name')->get();
+    $destinations = Destination::withCount('packages')->orderBy('sort_order')->orderBy('name')->paginate(5);
 
     return view('destinations', ['destinations' => $destinations]);
 })->name('destinations');

@@ -4,7 +4,7 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="border-b border-text-secondary/10 pb-6 pt-16">
             <p class="font-body text-sm text-text-secondary">
-                Showing {{ count($destinations) }} destinations
+                Showing {{ $destinations->total() }} destinations
             </p>
         </div>
 
@@ -45,5 +45,7 @@
                 <p class="font-body text-sm text-text-secondary">No destinations have been added yet. Check back soon.</p>
             @endforelse
         </div>
+
+        <x-pagination :paginator="$destinations" />
     </div>
 </section>
