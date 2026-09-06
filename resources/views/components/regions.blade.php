@@ -3,22 +3,22 @@
         [
             'name' => 'Mustang',
             'tagline' => 'Ancient Kingdom, Untouched',
-            'image' => 'images/regions/mustang.png',
+            'image' => 'images/regions/mustang.webp',
         ],
         [
             'name' => 'Pokhara',
             'tagline' => 'Gateway to Annapurna',
-            'image' => 'images/regions/pokhara.png',
+            'image' => 'images/regions/pokhara.webp',
         ],
         [
             'name' => 'Solu Khumbu',
             'tagline' => 'Home of Legends',
-            'image' => 'images/regions/solu-khumbu.png',
+            'image' => 'images/regions/solu-khumbu.webp',
         ],
         [
             'name' => 'Manaslu',
             'tagline' => 'Off the Beaten Path',
-            'image' => 'images/regions/manaslu.png',
+            'image' => 'images/regions/manaslu.webp',
         ],
     ];
 @endphp
