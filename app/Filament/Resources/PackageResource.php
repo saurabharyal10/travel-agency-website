@@ -43,6 +43,12 @@ class PackageResource extends Resource
                                         Forms\Components\TextInput::make('category')
                                             ->required()
                                             ->maxLength(255),
+                                        Forms\Components\Select::make('destination_id')
+                                            ->label('Destination')
+                                            ->relationship('destination', 'name')
+                                            ->searchable()
+                                            ->preload()
+                                            ->placeholder('None'),
                                         Forms\Components\TextInput::make('duration')
                                             ->required()
                                             ->maxLength(255)

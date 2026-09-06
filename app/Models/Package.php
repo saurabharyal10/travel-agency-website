@@ -12,6 +12,7 @@ class Package extends Model
     use LogsActivity;
 
     protected $fillable = [
+        'destination_id',
         'title',
         'slug',
         'category',
@@ -49,6 +50,11 @@ class Package extends Model
     public function enquiries()
     {
         return $this->hasMany(Enquiry::class);
+    }
+
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
     }
 
     public function pricingTiers()

@@ -28,4 +28,9 @@ class Destination extends Model
             get: fn () => $this->image ? asset('storage/'.$this->image) : null,
         );
     }
+
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
+    }
 }

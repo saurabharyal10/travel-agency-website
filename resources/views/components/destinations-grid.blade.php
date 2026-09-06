@@ -34,6 +34,12 @@
                     @if ($destination->description)
                         <p class="mt-2 line-clamp-2 font-body text-sm text-text-secondary">{{ $destination->description }}</p>
                     @endif
+
+                    @if ($destination->packages_count > 0)
+                        <a href="{{ url('/packages') }}" class="mt-3 inline-block font-body text-xs font-semibold uppercase tracking-wide text-primary hover:text-primary/80">
+                            {{ $destination->packages_count }} {{ Str::plural('package', $destination->packages_count) }} available
+                        </a>
+                    @endif
                 </article>
             @empty
                 <p class="font-body text-sm text-text-secondary">No destinations have been added yet. Check back soon.</p>
