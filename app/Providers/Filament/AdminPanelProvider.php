@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\Login;
 use App\Filament\Widgets\ActivePackagesWidget;
 use App\Filament\Widgets\EnquiriesChartWidget;
 use App\Filament\Widgets\NewContactMessagesWidget;
@@ -33,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('control_admin')
-            ->login()
+            ->login(Login::class)
             ->colors([
                 'primary' => Color::hex('#D91E18'),
                 'secondary' => Color::hex('#10542C'),
