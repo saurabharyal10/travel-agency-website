@@ -18,6 +18,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PackageSeeder::class);
         $this->call(AllPackagesSeeder::class);
         $this->call(DestinationSeeder::class);
+        // Runs after AllPackagesSeeder + DestinationSeeder: promotes three
+        // existing treks to type='trekking', adds the rest of the trekking
+        // catalogue plus the Dubai / Chardham trips, and wires the
+        // Exclusive Offers slots on Site Settings.
+        $this->call(TrekkingPackagesSeeder::class);
         $this->call(BlogPostSeeder::class);
         $this->call(InfoPageSeeder::class);
 
