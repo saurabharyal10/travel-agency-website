@@ -22,7 +22,7 @@
         </p>
 
         <h1 class="mt-4 max-w-3xl font-heading text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
-            Explore Nepal &amp; Beyond with Unforgettable Travel Experiences
+            {{ $settings?->tagline ?? 'Explore Nepal & Beyond with Unforgettable Travel Experiences' }}
         </h1>
 
         <!-- Search bar -->

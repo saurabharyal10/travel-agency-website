@@ -10,7 +10,7 @@
             <div>
                 <h2 class="font-heading text-h3 font-bold text-text-primary sm:text-h2">The Travel Post</h2>
                 <p class="mt-4 max-w-md font-body text-sm text-text-secondary">
-                    Stories from the trail, cultural insights, and early access to our seasonal departures.
+                    {{ $settings?->newsletter_blurb ?? 'Stories from the trail, cultural insights, and early access to our seasonal departures.' }}
                 </p>
 
                 @if (session('newsletter_subscribed'))

@@ -15,6 +15,9 @@ class SiteSetting extends Model
         'instagram_url',
         'twitter_url',
         'footer_copyright_text',
+        'tagline',
+        'newsletter_blurb',
+        'hours',
     ];
 
     public static function current(): self

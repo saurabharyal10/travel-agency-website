@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\SiteSetting;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Make the editable site settings available to the Blade views that
+        // render CMS-driven copy (hero tagline, newsletter blurb, footer text).
+        View::composer(
+            ['components.hero', 'components.travel-post', 'components.footer'],
+            fn (\Illuminate\View\View $view) => $view->with('settings', SiteSetting::current()),
+        );
+
         // Spatie's activitylog only auto-logs Eloquent model events, not
         // auth events - these have to be wired up explicitly.
         Event::listen(function (Login $event) {

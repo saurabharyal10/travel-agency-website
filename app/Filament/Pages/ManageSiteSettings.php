@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\SiteSetting;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -30,6 +31,17 @@ class ManageSiteSettings extends Page implements HasForms
     {
         return $form
             ->schema([
+                Section::make('Homepage & Newsletter')
+                    ->schema([
+                        Textarea::make('tagline')
+                            ->rows(2)
+                            ->maxLength(255)
+                            ->helperText('The large headline in the homepage hero.'),
+                        Textarea::make('newsletter_blurb')
+                            ->rows(2)
+                            ->maxLength(255)
+                            ->helperText('Short line under the newsletter sign-up heading.'),
+                    ]),
                 Section::make('Contact Info')
                     ->columns(2)
                     ->schema([
@@ -46,6 +58,11 @@ class ManageSiteSettings extends Page implements HasForms
                             ->url()
                             ->maxLength(255)
                             ->placeholder('https://wa.me/...'),
+                        TextInput::make('hours')
+                            ->maxLength(255)
+                            ->placeholder('e.g. Sun–Fri, 9am–6pm NPT')
+                            ->helperText('Opening hours. Leave blank until confirmed.')
+                            ->columnSpanFull(),
                     ]),
                 Section::make('Social Links')
                     ->columns(3)
