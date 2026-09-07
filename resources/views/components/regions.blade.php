@@ -4,21 +4,25 @@
             'name' => 'Mustang',
             'tagline' => 'Ancient Kingdom, Untouched',
             'image' => 'images/regions/mustang.webp',
+            'slug' => 'mustang',
         ],
         [
             'name' => 'Pokhara',
             'tagline' => 'Gateway to Annapurna',
             'image' => 'images/regions/pokhara.webp',
+            'slug' => 'pokhara',
         ],
         [
             'name' => 'Solu Khumbu',
             'tagline' => 'Home of Legends',
             'image' => 'images/regions/solu-khumbu.webp',
+            'slug' => 'everest-solu-khumbu',
         ],
         [
             'name' => 'Manaslu',
             'tagline' => 'Off the Beaten Path',
             'image' => 'images/regions/manaslu.webp',
+            'slug' => 'manaslu',
         ],
     ];
 @endphp
@@ -31,7 +35,7 @@
 
     <div class="mx-auto mt-12 grid max-w-7xl grid-cols-1 gap-6 px-6 sm:grid-cols-2 lg:px-8">
         @foreach ($regions as $region)
-            <a href="{{ url('/packages') }}" class="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-text-secondary/10">
+            <a href="{{ url('/packages?destination='.$region['slug']) }}" class="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-text-secondary/10">
                 @if (file_exists(public_path($region['image'])))
                     <img
                         src="{{ asset($region['image']) }}"

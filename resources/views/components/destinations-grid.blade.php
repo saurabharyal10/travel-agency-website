@@ -36,7 +36,7 @@
                     @endif
 
                     @if ($destination->packages_count > 0)
-                        <a href="{{ url('/packages') }}" class="mt-3 inline-block font-body text-xs font-semibold uppercase tracking-wide text-primary hover:text-primary/80">
+                        <a href="{{ url('/packages?destination='.$destination->slug) }}" class="mt-3 inline-block font-body text-xs font-semibold uppercase tracking-wide text-primary hover:text-primary/80">
                             {{ $destination->packages_count }} {{ Str::plural('package', $destination->packages_count) }} available
                         </a>
                     @endif

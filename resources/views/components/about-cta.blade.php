@@ -7,7 +7,7 @@
             </p>
         </div>
 
-        <a href="#" class="shrink-0 rounded-full bg-white px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-secondary transition-colors hover:bg-white/90">
+        <a href="{{ url('/packages') }}" class="shrink-0 rounded-full bg-white px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-secondary transition-colors hover:bg-white/90">
             Begin Your Journey
         </a>
     </div>

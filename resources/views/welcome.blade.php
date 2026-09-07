@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="TRAVEL. — Explore Nepal & Beyond">
     <x-navbar />
     <x-hero />
     <x-curated-expeditions />

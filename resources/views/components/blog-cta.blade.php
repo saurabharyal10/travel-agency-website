@@ -5,7 +5,7 @@
             Subscribe to the journal for new dispatches, trail notes, and early access to seasonal departures.
         </p>
 
-        <a href="#" class="mt-8 inline-block rounded-md bg-primary px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary/90">
+        <a href="#latest-stories" class="mt-8 inline-block rounded-md bg-primary px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary/90">
             Explore Stories
         </a>
     </div>

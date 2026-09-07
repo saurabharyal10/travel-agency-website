@@ -50,7 +50,7 @@
             <div>
                 <div class="flex items-baseline justify-between">
                     <span class="font-body text-xs font-semibold uppercase tracking-wide text-text-secondary">On Instagram</span>
-                    <a href="#" class="font-body text-sm font-semibold text-primary">@travel</a>
+                    <span class="font-body text-sm font-semibold text-primary">@travel</span>
                 </div>
 
                 <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">

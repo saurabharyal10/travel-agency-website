@@ -4,8 +4,19 @@
     $when = trim((string) request('when'));
     $hasFilters = $destination !== '' || $activity !== '' || $when !== '';
 
+    // A destination filter can arrive as a real Destination (slug from the
+    // region / destination cards, or an exact name from the hero search) - in
+    // which case filter on the actual relationship - or as free text typed
+    // into the hero search box, which falls back to a title/description match.
+    $matchedDestination = $destination !== ''
+        ? \App\Models\Destination::where('slug', $destination)
+            ->orWhere('name', $destination)
+            ->first()
+        : null;
+
     $packages = \App\Models\Package::where('is_active', true)
-        ->when($destination !== '', fn ($query) => $query->where(fn ($query) => $query
+        ->when($matchedDestination, fn ($query) => $query->where('destination_id', $matchedDestination->id))
+        ->when($destination !== '' && ! $matchedDestination, fn ($query) => $query->where(fn ($query) => $query
             ->where('title', 'like', "%{$destination}%")
             ->orWhere('description', 'like', "%{$destination}%")
         ))
@@ -45,6 +56,17 @@
                 </a>
             @endif
         </div>
+
+        @if ($packages->isEmpty())
+            <div class="mt-16 text-center">
+                <p class="font-body text-sm text-text-secondary">
+                    No journeys match this search yet.
+                </p>
+                <a href="{{ url('/packages') }}" class="mt-4 inline-block font-body text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                    View all journeys
+                </a>
+            </div>
+        @endif
 
         <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($packages as $package)

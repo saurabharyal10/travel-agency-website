@@ -1,6 +1,6 @@
 @props(['stories'])
 
-<section class="bg-background py-20 sm:py-28">
+<section id="latest-stories" class="bg-background py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>

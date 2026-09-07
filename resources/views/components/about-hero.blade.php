@@ -23,17 +23,8 @@
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-8">
-            <a href="#" class="rounded-md bg-primary px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary/90">
+            <a href="#our-impact" class="rounded-md bg-primary px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary/90">
                 Explore Our Impact
-            </a>
-
-            <a href="#" class="flex items-center gap-3 font-body text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:text-white/80">
-                <span class="flex h-9 w-9 items-center justify-center rounded-full border border-white/60">
-                    <svg class="ml-0.5 h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M8 5V19L19 12L8 5Z" />
-                    </svg>
-                </span>
-                Watch The Film
             </a>
         </div>
     </div>

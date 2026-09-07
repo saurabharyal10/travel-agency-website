@@ -6,7 +6,7 @@
     ];
 @endphp
 
-<section class="bg-background py-16 sm:py-20">
+<section id="our-impact" class="bg-background py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div class="overflow-hidden rounded-2xl">
