@@ -32,6 +32,9 @@ class DestinationResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
+                Forms\Components\TextInput::make('country')
+                    ->maxLength(255)
+                    ->helperText('Groups this destination under a country in the navbar "Destinations" dropdown.'),
                 Forms\Components\TextInput::make('tagline')
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
@@ -41,7 +44,8 @@ class DestinationResource extends Resource
                     ->image()
                     ->directory('destinations'),
                 Forms\Components\Toggle::make('is_featured')
-                    ->label('Featured on homepage')
+                    ->label('Active under Destinations menu')
+                    ->helperText("When on, this destination's country is listed in the site's navbar \"Destinations\" dropdown. Turn off to hide it from that menu.")
                     ->default(true),
                 Forms\Components\TextInput::make('sort_order')
                     ->numeric()
@@ -56,10 +60,14 @@ class DestinationResource extends Resource
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('country')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('tagline')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 Tables\Columns\IconColumn::make('is_featured')
-                    ->label('Featured')
+                    ->label('In menu')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('sort_order')
                     ->label('Order')
@@ -72,7 +80,8 @@ class DestinationResource extends Resource
             ->defaultSort('sort_order')
             ->reorderable('sort_order')
             ->filters([
-                Tables\Filters\TernaryFilter::make('is_featured'),
+                Tables\Filters\TernaryFilter::make('is_featured')
+                    ->label('Active under Destinations menu'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

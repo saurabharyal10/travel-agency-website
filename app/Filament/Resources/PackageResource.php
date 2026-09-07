@@ -43,6 +43,15 @@ class PackageResource extends Resource
                                         Forms\Components\TextInput::make('category')
                                             ->required()
                                             ->maxLength(255),
+                                        Forms\Components\Select::make('type')
+                                            ->options([
+                                                'trekking' => 'Trekking',
+                                                'travel' => 'Travel',
+                                            ])
+                                            ->default('travel')
+                                            ->required()
+                                            ->native(false)
+                                            ->helperText('Controls which navbar "Packages" dropdown this appears under.'),
                                         Forms\Components\Select::make('destination_id')
                                             ->label('Destination')
                                             ->relationship('destination', 'name')
@@ -272,6 +281,10 @@ class PackageResource extends Resource
                 Tables\Columns\TextColumn::make('category')
                     ->badge()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->badge()
+                    ->formatStateUsing(fn (?string $state): string => ucfirst((string) $state))
+                    ->color(fn (?string $state): string => $state === 'trekking' ? 'warning' : 'gray'),
                 Tables\Columns\TextColumn::make('duration'),
                 Tables\Columns\TextColumn::make('price')
                     ->money('usd'),
@@ -294,6 +307,11 @@ class PackageResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('category')
                     ->options(fn (): array => \App\Models\Package::query()->distinct()->pluck('category', 'category')->all()),
+                Tables\Filters\SelectFilter::make('type')
+                    ->options([
+                        'trekking' => 'Trekking',
+                        'travel' => 'Travel',
+                    ]),
                 Tables\Filters\TernaryFilter::make('is_active'),
             ])
             ->actions([
