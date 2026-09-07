@@ -41,22 +41,24 @@
 
 <section class="bg-background pb-24 sm:pb-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-text-secondary/10 pb-6">
-            <p class="flex flex-wrap items-center gap-2 font-body text-sm text-text-secondary">
-                <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
-                    {{ $packages->total() }} {{ Str::plural('Journey', $packages->total()) }}
-                </span>
-                <span>{{ $hasFilters ? 'matching your search' : 'curated in Nepal' }}</span>
-            </p>
+        <div class="border-b border-text-secondary/10 pb-6 pt-16">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <p class="flex flex-wrap items-center gap-2 font-body text-sm text-text-secondary">
+                    <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
+                        {{ $packages->total() }} {{ Str::plural('Journey', $packages->total()) }}
+                    </span>
+                    <span>{{ $hasFilters ? 'matching your search' : 'curated in Nepal' }}</span>
+                </p>
 
-            @if ($hasFilters)
-                <a href="{{ url('/packages') }}" class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-wide text-primary transition-colors hover:bg-primary/90 hover:text-white">
-                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                    Clear filters
-                </a>
-            @endif
+                @if ($hasFilters)
+                    <a href="{{ url('/packages') }}" class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-wide text-primary transition-colors hover:bg-primary/90 hover:text-white">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        Clear filters
+                    </a>
+                @endif
+            </div>
         </div>
 
         @if ($packages->isEmpty())
