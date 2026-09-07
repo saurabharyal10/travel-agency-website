@@ -25,6 +25,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Rmsramos\Activitylog\ActivitylogPlugin;
+use Stephenjude\FilamentTwoFactorAuthentication\TwoFactorAuthenticationPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -62,6 +63,11 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('System')
                     ->navigationIcon('heroicon-o-clipboard-document-list')
                     ->isResourceActionHidden(false)
+            )
+            ->plugin(
+                TwoFactorAuthenticationPlugin::make()
+                    ->enableTwoFactorAuthentication()
+                    ->addTwoFactorMenuItem()
             )
             ->middleware([
                 EncryptCookies::class,
