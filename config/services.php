@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    // Consumed only by the one-off `packages:fetch-images` Artisan command.
+    'pexels' => [
+        'key' => env('PEXELS_API_KEY'),
+    ],
+
 ];
