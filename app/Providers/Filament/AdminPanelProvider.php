@@ -3,11 +3,8 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\Login;
-use App\Filament\Widgets\ActivePackagesWidget;
+use App\Filament\Widgets\DashboardStatsWidget;
 use App\Filament\Widgets\EnquiriesChartWidget;
-use App\Filament\Widgets\NewContactMessagesWidget;
-use App\Filament\Widgets\NewEnquiriesWidget;
-use App\Filament\Widgets\PublishedBlogPostsWidget;
 use App\Filament\Widgets\RecentActivityWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -49,12 +46,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
-                ActivePackagesWidget::class,
-                NewEnquiriesWidget::class,
-                NewContactMessagesWidget::class,
-                PublishedBlogPostsWidget::class,
+                DashboardStatsWidget::class,
                 EnquiriesChartWidget::class,
                 RecentActivityWidget::class,
             ])

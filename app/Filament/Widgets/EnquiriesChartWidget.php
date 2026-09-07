@@ -12,7 +12,9 @@ class EnquiriesChartWidget extends ChartWidget
 
     protected static ?string $maxHeight = '260px';
 
-    protected int|string|array $columnSpan = 1;
+    protected static ?int $sort = 2;
+
+    protected int|string|array $columnSpan = 'full';
 
     protected function getType(): string
     {

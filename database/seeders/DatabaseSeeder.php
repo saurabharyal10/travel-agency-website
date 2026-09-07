@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DestinationSeeder::class);
         $this->call(BlogPostSeeder::class);
 
-        // Demo-only placeholder subscribers (@example.com). Remove this call
-        // once the real data cleanup (task 7j) has run - see the seeder docblock.
-        $this->call(NewsletterSubscriberSeeder::class);
+        // NewsletterSubscriberSeeder is intentionally NOT called: its demo
+        // @example.com rows were removed in the task 7j data cleanup. The
+        // seeder file is kept for reference / re-seeding demo data on demand.
     }
 }
