@@ -1,3 +1,4 @@
+@if (! empty($package['gallery_urls']))
 <div>
     <h2 class="font-heading text-h4 font-bold text-text-primary">Gallery</h2>
 
@@ -13,3 +14,4 @@
         @endforeach
     </div>
 </div>
+@endif

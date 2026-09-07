@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="Placeholder image needs a real photo">
+  <defs>
+    <pattern id="hatch" width="60" height="60" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="#ededed"/>
+      <rect width="30" height="60" fill="#e2e2e2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="1500" fill="url(#hatch)"/>
+  <rect x="36" y="36" width="1128" height="1428" fill="none" stroke="#D91E18" stroke-width="12" stroke-dasharray="44 26"/>
+
+  <g transform="translate(600 560)">
+    <circle r="120" fill="none" stroke="#D91E18" stroke-width="12"/>
+    <rect x="-78" y="-46" width="156" height="104" rx="12" fill="none" stroke="#D91E18" stroke-width="12"/>
+    <circle cx="0" cy="6" r="30" fill="none" stroke="#D91E18" stroke-width="12"/>
+    <rect x="34" y="-66" width="34" height="20" rx="4" fill="#D91E18"/>
+  </g>
+
+  <g text-anchor="middle" fill="#D91E18">
+    <text x="600" y="820" font-size="118" font-weight="bold" letter-spacing="4">NEEDS REAL PHOTO</text>
+  </g>
+  <g text-anchor="middle" fill="#666">
+    <text x="600" y="900" font-size="42">This is a placeholder — replace before launch</text>
+    <text x="600" y="962" font-size="34" fill="#8a8a8a">Use royalty-free imagery only (Unsplash / Pexels)</text>
+  </g>
+</svg>

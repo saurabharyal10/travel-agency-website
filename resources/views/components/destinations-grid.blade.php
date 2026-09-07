@@ -1,14 +1,29 @@
 @props(['destinations'])
 
+@php
+    $country = trim((string) request('country'));
+@endphp
+
 <section class="bg-background pb-24 sm:pb-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="border-b border-text-secondary/10 pb-6 pt-16">
-            <p class="flex flex-wrap items-center gap-2 font-body text-sm text-text-secondary">
-                <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
-                    {{ $destinations->total() }} {{ Str::plural('Destination', $destinations->total()) }}
-                </span>
-                <span>across Nepal &amp; beyond</span>
-            </p>
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <p class="flex flex-wrap items-center gap-2 font-body text-sm text-text-secondary">
+                    <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
+                        {{ $destinations->total() }} {{ Str::plural('Destination', $destinations->total()) }}
+                    </span>
+                    <span>{{ $country !== '' ? 'in '.$country : 'across Nepal & beyond' }}</span>
+                </p>
+
+                @if ($country !== '')
+                    <a href="{{ url('/destinations') }}" class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-wide text-primary transition-colors hover:bg-primary/90 hover:text-white">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        Clear filter
+                    </a>
+                @endif
+            </div>
         </div>
 
         <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">

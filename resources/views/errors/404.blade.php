@@ -1,4 +1,4 @@
-<x-layout title="Page Not Found — TRAVEL.">
+<x-layout :title="'Page Not Found — '.config('app.brand_name')">
     <x-navbar />
 
     <section class="flex min-h-[60vh] items-center bg-background py-20 sm:py-28">

@@ -7,7 +7,7 @@
     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/40 to-black/20"></div>
 
     <span class="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 rotate-180 font-body text-xs font-semibold uppercase tracking-[0.4em] text-white/30 [writing-mode:vertical-rl] lg:block">
-        The Travel.
+        {{ config('app.brand_name') }}
     </span>
 
     <div class="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">

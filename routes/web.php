@@ -40,7 +40,15 @@ Route::get('/about', function () {
 });
 
 Route::get('/destinations', function () {
-    $destinations = Destination::withCount('packages')->orderBy('sort_order')->orderBy('name')->paginate(5);
+    // The navbar "Destinations" dropdown lands here with ?country=Nepal etc.
+    $country = trim((string) request('country'));
+
+    $destinations = Destination::withCount('packages')
+        ->when($country !== '', fn ($query) => $query->where('country', $country))
+        ->orderBy('sort_order')
+        ->orderBy('name')
+        ->paginate(5)
+        ->withQueryString();
 
     return view('destinations', ['destinations' => $destinations]);
 })->name('destinations');

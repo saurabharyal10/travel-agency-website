@@ -52,7 +52,8 @@
 
             <div>
                 <h3 class="font-body text-sm font-semibold uppercase tracking-wide text-text-primary">Follow Us</h3>
-                {{-- Placeholder hrefs until real social accounts exist --}}
+                {{-- Instagram / Facebook / YouTube stay as placeholder hrefs until real accounts exist.
+                     TikTok links out for real once a URL is saved in Site Settings. --}}
                 <div class="mt-4 flex items-center gap-3">
                     <a href="#" aria-label="Instagram" class="flex h-9 w-9 items-center justify-center rounded-full border border-text-secondary/20 text-text-secondary transition-colors hover:border-primary hover:text-primary">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -72,13 +73,20 @@
                             <path d="M10.5 9.5v5l4.5-2.5-4.5-2.5Z" fill="currentColor" />
                         </svg>
                     </a>
+                    @if ($settings?->tiktok_url)
+                        <a href="{{ $settings->tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok" class="flex h-9 w-9 items-center justify-center rounded-full border border-text-secondary/20 text-text-secondary transition-colors hover:border-primary hover:text-primary">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M16.5 3c.3 2.02 1.42 3.34 3.32 3.53.4.05.8.06 1.18.05v2.86c-1.6.1-3.05-.42-4.44-1.32v6.02c0 3.32-2.02 5.9-5.14 6.55-3.4.7-6.83-1.47-7.5-4.85-.66-3.4 1.5-6.63 4.9-7.3.6-.12 1.24-.13 1.9-.06v2.94c-.34-.06-.66-.12-.98-.12-1.4.02-2.6.9-3 2.2-.4 1.3.1 2.72 1.24 3.5 1.1.76 2.66.72 3.72-.12.72-.57 1.1-1.34 1.1-2.26.02-3.72.01-7.44.02-11.16 0-.22 0-.44.01-.66h3.5Z" />
+                            </svg>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
 
         <div class="mt-16 flex justify-center border-t border-text-secondary/10 pt-8">
             <p class="font-body text-xs text-text-secondary">
-                &copy; {{ date('Y') }} {{ $settings?->footer_copyright_text ?? 'TRAVEL. All rights reserved.' }} &middot; Crafted by
+                &copy; {{ date('Y') }} {{ $settings?->footer_copyright_text ?? config('app.brand_name').'. All rights reserved.' }} &middot; Crafted by
                 <a href="https://saurabh-aryal.com.np" target="_blank" rel="noopener" class="text-text-secondary/70 underline decoration-text-secondary/30 underline-offset-2 transition-colors hover:text-text-secondary hover:decoration-text-secondary">Saurabh Aryal</a>
             </p>
         </div>

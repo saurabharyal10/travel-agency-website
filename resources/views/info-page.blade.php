@@ -1,4 +1,4 @@
-<x-layout :title="$page->title.' — TRAVEL.'">
+<x-layout :title="$page->title.' — '.config('app.brand_name')">
     <x-navbar />
 
     <section class="border-b border-text-secondary/10 bg-background">

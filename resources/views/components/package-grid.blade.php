@@ -2,7 +2,13 @@
     $destination = trim((string) request('destination'));
     $activity = trim((string) request('activity'));
     $when = trim((string) request('when'));
-    $hasFilters = $destination !== '' || $activity !== '' || $when !== '';
+
+    // The navbar "Packages" dropdown lands here with ?type=trekking|travel.
+    $type = trim((string) request('type'));
+    $type = in_array($type, ['trekking', 'travel'], true) ? $type : '';
+
+    $searchFilters = $destination !== '' || $activity !== '' || $when !== '';
+    $hasFilters = $searchFilters || $type !== '';
 
     // A destination filter can arrive as a real Destination (slug from the
     // region / destination cards, or an exact name from the hero search) - in
@@ -22,9 +28,16 @@
         ))
         ->when($activity !== '', fn ($query) => $query->where('category', $activity))
         ->when($when !== '', fn ($query) => $query->where('best_season', 'like', "%{$when}%"))
+        ->when($type !== '', fn ($query) => $query->where('type', $type))
         ->orderBy('id')
         ->paginate(6)
         ->withQueryString();
+
+    $resultLabel = match (true) {
+        $type !== '' && ! $searchFilters => $type === 'trekking' ? 'trekking journeys' : 'travel journeys',
+        $hasFilters => 'matching your search',
+        default => 'curated in Nepal',
+    };
 
     $badgeStyles = [
         'featured' => 'bg-primary text-white',
@@ -47,7 +60,7 @@
                     <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
                         {{ $packages->total() }} {{ Str::plural('Journey', $packages->total()) }}
                     </span>
-                    <span>{{ $hasFilters ? 'matching your search' : 'curated in Nepal' }}</span>
+                    <span>{{ $resultLabel }}</span>
                 </p>
 
                 @if ($hasFilters)
