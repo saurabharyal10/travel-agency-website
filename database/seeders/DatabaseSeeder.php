@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AllPackagesSeeder::class);
         $this->call(DestinationSeeder::class);
         $this->call(BlogPostSeeder::class);
+        $this->call(InfoPageSeeder::class);
 
         // NewsletterSubscriberSeeder is intentionally NOT called: its demo
         // @example.com rows were removed in the task 7j data cleanup. The

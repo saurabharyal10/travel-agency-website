@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\InfoPage;
 use App\Models\SiteSetting;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
@@ -30,6 +31,17 @@ class AppServiceProvider extends ServiceProvider
         View::composer(
             ['components.hero', 'components.travel-post', 'components.footer'],
             fn (\Illuminate\View\View $view) => $view->with('settings', SiteSetting::current()),
+        );
+
+        // The footer's "Travel Info" column is driven by the InfoPage CMS - only
+        // published pages appear, so unpublishing or deleting one simply drops
+        // the link rather than leaving a dead link behind.
+        View::composer(
+            'components.footer',
+            fn (\Illuminate\View\View $view) => $view->with(
+                'infoPages',
+                InfoPage::query()->published()->ordered()->limit(6)->get(['title', 'slug']),
+            ),
         );
 
         // Spatie's activitylog only auto-logs Eloquent model events, not

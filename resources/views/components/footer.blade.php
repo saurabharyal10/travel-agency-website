@@ -14,9 +14,11 @@
             <div>
                 <h3 class="font-body text-sm font-semibold uppercase tracking-wide text-text-primary">Travel Info</h3>
                 <ul class="mt-4 space-y-3">
-                    <li><a href="{{ url('/contact') }}" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Visa Requirements</a></li>
-                    <li><a href="{{ url('/contact') }}" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Insurance &amp; Safety</a></li>
-                    <li><a href="{{ url('/contact') }}" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Common Questions</a></li>
+                    @forelse (($infoPages ?? collect()) as $infoPage)
+                        <li><a href="{{ url('/info/'.$infoPage->slug) }}" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">{{ $infoPage->title }}</a></li>
+                    @empty
+                        <li><a href="{{ url('/contact') }}" class="font-body text-sm text-text-secondary transition-colors hover:text-primary">Ask us a question</a></li>
+                    @endforelse
                 </ul>
             </div>
 

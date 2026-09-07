@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\InfoPageController;
 use App\Http\Controllers\NewsletterSubscriberController;
 use App\Http\Controllers\PackageEnquiryController;
 use App\Models\BlogPost;
@@ -67,6 +68,8 @@ Route::get('/blog/{slug}', function (string $slug) {
 
     return view('blog-post', ['post' => $post]);
 })->name('blog.show');
+
+Route::get('/info/{slug}', [InfoPageController::class, 'show'])->name('info.show');
 
 Route::get('/contact', [ContactMessageController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactMessageController::class, 'store'])
