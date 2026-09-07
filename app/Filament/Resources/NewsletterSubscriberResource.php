@@ -31,7 +31,15 @@ class NewsletterSubscriberResource extends Resource
                     ->dateTime()
                     ->sortable(),
             ])
-            ->defaultSort('subscribed_at', 'desc');
+            ->defaultSort('subscribed_at', 'desc')
+            ->actions([
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
     }
 
     public static function getPages(): array
