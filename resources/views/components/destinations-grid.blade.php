@@ -3,8 +3,11 @@
 <section class="bg-background pb-24 sm:pb-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="border-b border-text-secondary/10 pb-6 pt-16">
-            <p class="font-body text-sm text-text-secondary">
-                Showing {{ $destinations->total() }} destinations
+            <p class="flex flex-wrap items-center gap-2 font-body text-sm text-text-secondary">
+                <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
+                    {{ $destinations->total() }} {{ Str::plural('Destination', $destinations->total()) }}
+                </span>
+                <span>across Nepal &amp; beyond</span>
             </p>
         </div>
 
