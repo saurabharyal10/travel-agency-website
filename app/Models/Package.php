@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -16,6 +17,7 @@ class Package extends Model
         'title',
         'slug',
         'category',
+        'type',
         'duration',
         'description',
         'price',
@@ -82,7 +84,9 @@ class Package extends Model
     protected function imageUrl(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->image ? asset('storage/'.$this->image) : null,
+            get: fn () => $this->image && Storage::disk('public')->exists($this->image)
+                ? asset('storage/'.$this->image)
+                : asset('images/_placeholder-needs-photo.svg'),
         );
     }
 

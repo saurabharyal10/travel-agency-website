@@ -17,6 +17,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Public Brand Name
+    |--------------------------------------------------------------------------
+    |
+    | The customer-facing business name shown in the site logo, footer,
+    | and page titles. PLACEHOLDER pending Saurabh's confirmation of the
+    | exact formatting/punctuation — change it here in one place.
+    |
+    */
+
+    'brand_name' => env('APP_BRAND_NAME', 'Arjun Travel and Tours'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
