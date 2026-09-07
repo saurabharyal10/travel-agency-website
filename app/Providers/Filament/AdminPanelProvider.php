@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\Login;
+use App\Filament\Resources\ActivityLogResource;
 use App\Filament\Widgets\DashboardStatsWidget;
 use App\Filament\Widgets\EnquiriesChartWidget;
 use App\Filament\Widgets\RecentActivityWidget;
@@ -52,6 +53,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugin(
                 ActivitylogPlugin::make()
+                    ->resource(ActivityLogResource::class)
                     ->navigationGroup('System')
                     ->navigationIcon('heroicon-o-clipboard-document-list')
                     ->isResourceActionHidden(false)
