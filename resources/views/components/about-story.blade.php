@@ -12,7 +12,7 @@
             <div class="overflow-hidden rounded-2xl">
                 <img
                     src="{{ asset('images/our_story_img.webp') }}"
-                    alt="Trekking guide with local community"
+                    alt="Porter carrying a traditional doko basket on a Himalayan trail"
                     class="h-full w-full object-cover"
                 >
             </div>
