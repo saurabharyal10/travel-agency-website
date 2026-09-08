@@ -8,26 +8,11 @@
 
 <section class="bg-background py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-            <div>
-                <h2 class="font-heading text-h3 font-bold text-text-primary sm:text-h2">Curated Expeditions</h2>
-                <p class="mt-3 max-w-md font-body text-sm text-text-secondary">
-                    Rare experiences designed for the conscious traveler. From high-altitude challenges to serene cultural immersions.
-                </p>
-            </div>
-
-            <div class="flex shrink-0 items-center gap-3">
-                <button type="button" aria-label="Previous expedition" class="flex h-11 w-11 items-center justify-center rounded-full border border-text-secondary/20 text-text-primary transition-colors hover:border-primary hover:text-primary">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-                <button type="button" aria-label="Next expedition" class="flex h-11 w-11 items-center justify-center rounded-full border border-text-secondary/20 text-text-primary transition-colors hover:border-primary hover:text-primary">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-            </div>
+        <div>
+            <h2 class="font-heading text-h3 font-bold text-text-primary sm:text-h2">Curated Expeditions</h2>
+            <p class="mt-3 max-w-md font-body text-sm text-text-secondary">
+                Rare experiences designed for the conscious traveler. From high-altitude challenges to serene cultural immersions.
+            </p>
         </div>
 
         <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
