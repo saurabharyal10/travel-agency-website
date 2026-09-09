@@ -45,14 +45,18 @@
 
 <nav class="relative z-30 bg-background" data-mobile-nav>
     <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <!-- Logo -->
-        <a href="{{ url('/') }}" class="flex shrink-0 items-center gap-2">
-            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M3 17L9 8L13 14L16 10L21 17H3Z" fill="currentColor" />
-                </svg>
-            </span>
-            <span class="font-heading text-xl font-bold tracking-wide text-text-primary">{{ config('app.brand_name') }}</span>
+        <!-- Logo (full client lockup, no crop) -->
+        <a href="{{ url('/') }}" class="flex shrink-0 items-center">
+            <picture>
+                <source srcset="{{ asset('images/branding/logo.webp') }}" type="image/webp">
+                <img
+                    src="{{ asset('images/branding/logo.png') }}"
+                    alt="{{ config('app.brand_name') }}"
+                    width="594"
+                    height="400"
+                    class="h-14 w-auto object-contain"
+                />
+            </picture>
         </a>
 
         <!-- Centered nav links (desktop) -->

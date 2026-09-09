@@ -34,6 +34,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('control_admin')
             ->brandName(config('app.brand_name'))
+            ->brandLogo(asset('images/branding/logo.png'))
+            ->brandLogoHeight('3.5rem')
+            ->favicon(asset('images/branding/favicon-32.png'))
             ->login(Login::class)
             ->colors([
                 'primary' => Color::hex('#D91E18'),
